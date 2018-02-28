@@ -1,0 +1,14 @@
+version: "3"
+services:
+  oracle_cloud_kuber:
+    build: .
+    image: oracle_cloud_kuber
+    volumes:
+      - ./kubersettings.tfvars:/root/config/kubersettings.tfvars
+      - ./kubercreds.tfvars:/root/config/kubercreds.tfvars
+      - ./oci_api_key.pem:/root/oci_api_key.pem
+      - ./kadmin:/root/kadmin
+      - ./output_logs:/root/logs/
+    environment:
+      - keeprunning=${keep_running}
+      - jftest=jftest1
